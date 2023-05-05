@@ -256,7 +256,7 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
             cv.imshow('video', frame)
         
         ## in kết quả
-        print('Frame {}: FPS = {}, speed = {} ms, num_objects: {}'.format(frame_count, fps, round((end_time - start_time)*1000, 2), len(det)))
+        print('Frame {}: FPS = {}, speed = {} ms, num_objects: {}, status: {}'.format(frame_count, fps, round((end_time - start_time)*1000, 2), len(det)), traffic_status)
         
         ### lưu kết quả
         if save_result:
