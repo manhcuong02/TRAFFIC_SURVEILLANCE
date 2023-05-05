@@ -1,0 +1,123 @@
+[
+    {
+        "id": 1,
+        "xywh": [
+            235,
+            585,
+            108,
+            110
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 2,
+        "xywh": [
+            5,
+            592,
+            121,
+            123
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 3,
+        "xywh": [
+            126,
+            449,
+            129,
+            177
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 4,
+        "xywh": [
+            167,
+            631,
+            207,
+            318
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 5,
+        "xywh": [
+            246,
+            673,
+            68,
+            111
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 6,
+        "xywh": [
+            94,
+            635,
+            44,
+            85
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 7,
+        "xywh": [
+            60,
+            592,
+            44,
+            71
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 8,
+        "xywh": [
+            23,
+            492,
+            59,
+            52
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 9,
+        "xywh": [
+            190,
+            266,
+            56,
+            82
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 10,
+        "xywh": [
+            159,
+            111,
+            32,
+            42
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    },
+    {
+        "id": 11,
+        "xywh": [
+            85,
+            51,
+            32,
+            29
+        ],
+        "distance_moved": 0,
+        "vel": -1
+    }
+]
