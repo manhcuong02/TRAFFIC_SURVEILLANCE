@@ -281,9 +281,4 @@ if __name__ =='__main__':
     weights = 'weights/yolov5x.pt'
     yaml_filename = 'data/coco128.yaml'
     device = 'cuda'
-    
-<<<<<<< Updated upstream
     main(weights, yaml_filename, device, save_result = True, save_fps = 30, img_show= True)
-=======
-    main(weights, yaml_filename, device, save_result = True, save_fps = 30, img_show = True)
->>>>>>> Stashed changes
