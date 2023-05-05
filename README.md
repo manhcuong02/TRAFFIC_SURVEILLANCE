@@ -2,10 +2,12 @@
 
 # Download data
 Vui lòng xem hướng dẫn tại [đây](https://github.com/manhcuong02/traffic-status-evaluation/blob/main/data/videos/Readme.md)
+
 Please refer to the instructions [here](https://github.com/manhcuong02/traffic-status-evaluation/blob/main/data/videos/Readme.md)
 
 # Download weights for yolov5
 Vui lòng xem hướng dẫn tại [đây](https://github.com/manhcuong02/traffic-status-evaluation/blob/main/weights/Readme.md)
+
 Please refer to the instructions [here](https://github.com/manhcuong02/traffic-status-evaluation/blob/main/weights/Readme.md)
 
 
