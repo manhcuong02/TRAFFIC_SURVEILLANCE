@@ -117,7 +117,7 @@ def calculate_velocity(det: ArrayLike, vehicle_id: List, vehicle_info: List[Dict
             )
             vehicle_info[index]['age'] = age
             vehicle_info[index]['xywh'] = xywh
-            if age >= MIN_FRAMES_TO_CALCULATE_VELOCITY:
+            if age % MIN_FRAMES_TO_CALCULATE_VELOCITY == 0:
                 vehicle_info[index]['vel'] = convert_to_kmh(vehicle_info[index]['distance_moved'], ROAD_CALIB_SIZE[1], age)
 
     return vehicle_id, vehicle_info
@@ -169,7 +169,7 @@ def remove_vehicle_info(vehicle_info, vehicle_id, trackid_out):
 def main(weights, yaml_filename, device, img_show = True,save_result = False, save_result_path = None, save_fps  = FPS_CAMERA):
     
     deepsort = init_tracker(MODEL_TYPE)
-    model = Detection(weights = weights, device = device, yaml = yaml_filename, img_size = 640,half = False, tracker = deepsort)
+    model = Detection(weights = weights, device = device, yaml = yaml_filename, img_size = IMG_SIZE, half = False, tracker = deepsort)
     vid = cv.VideoCapture(VIDEO_PATH)
 
     if save_result:
@@ -223,8 +223,8 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
 
         vehicle_flow, trackid_out_data = calculate_vehicle_flow(vehicle_flow, trackid_out_data, line_vertices, det)
         
-        ###  draw roi
-        frame = draw_roi_and_lines(frame, polygon_vertices, line_vertices)  
+        # ###  draw roi
+        # frame = draw_roi_and_lines(frame, polygon_vertices, line_vertices)  
 
         if len(det) != 0:   
             transformed_det = convert_detection_xyxy2xywh(det)
@@ -232,8 +232,8 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
             
             vehicle_id, vehicle_info = calculate_velocity(transformed_det, vehicle_id, vehicle_info)
             vehicle_id, vehicle_info = remove_vehicle_info(vehicle_info, vehicle_id, trackid_out_data)
-            
-            # with open('vehicle_info.json', 'w') as outfile:
+            # print(vehicle_info)
+            # with open('data1.json', 'w') as outfile:
             #     json_data = json.dumps(vehicle_info, indent=4)
             #     outfile.write(json_data)
             # break
@@ -256,7 +256,7 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
             cv.imshow('video', frame)
         
         ## in kết quả
-        print('Frame {}: FPS = {}, speed = {} ms, num_objects: {}, status: {}'.format(frame_count, fps, round((end_time - start_time)*1000, 2), len(det)), traffic_status)
+        print('Frame {}: FPS = {}, speed = {} ms, num_objects: {}, status: {}'.format(frame_count, fps, round((end_time - start_time)*1000, 2), len(det), traffic_status))
         
         ### lưu kết quả
         if save_result:
@@ -266,11 +266,8 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
         if frame_count % frames_per_minute() == 0: 
             vehicle_flow = 0
             trackid_out_data = []
+
         frame_count += 1
-
-
-        if cv.waitKey(1) & 0xFF == ord('q'):
-            break
 
     if save_result:
         out_vid.release()
@@ -279,6 +276,7 @@ def main(weights, yaml_filename, device, img_show = True,save_result = False, sa
 
 if __name__ =='__main__':
     weights = 'weights/yolov5x.pt'
-    yaml_filename = 'data/coco128.yaml'
+    yaml_filename = 'data/coco.yaml'
     device = 'cuda'
+    
     main(weights, yaml_filename, device, save_result = True, save_fps = 30, img_show= True)
